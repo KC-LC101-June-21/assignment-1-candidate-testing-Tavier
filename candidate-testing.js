@@ -29,13 +29,38 @@ for (let i = 0; candidateAnswers.length < correctAnswers.length; i++) {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-for (i = 0; i < candidateAnswers.length; i++) {
-    console.log(`You answered ${candidateAnswers[i]}, the correct answer is ${correctAnswers[i]}.`)
-}
-
-
-  let grade;
+  console.log(`Candidate Name: ${candidateName}`) 
   
+  
+  for (i = 0; i < candidateAnswers.length; i++) {
+    console.log(`${i+1}) ${questions[i]}`) 
+    console.log(`Your Answer: ${candidateAnswers[i]}`)
+    console.log(`Correct Answer: ${correctAnswers[i]} \n`)
+  }
+  
+  let numberOfCorrectAnswers = 0;
+  let grade = '';
+  
+  for (let i = 0; i < candidateAnswers.length; i++) {
+    if (candidateAnswers[i].toLowerCase() == correctAnswers[i].toLowerCase()) {
+      numberOfCorrectAnswers += 1;
+    } 
+  }
+grade = numberOfCorrectAnswers / correctAnswers.length * 100;
+
+let passFailStatus = ''
+
+  if (grade >= '80') {
+    passFailStatus = 'PASSED'
+  } else {
+    passFailStatus = 'FAILED'
+  }
+
+let rightArrows = '>>>';
+let leftArrows = '<<<'
+
+console.log(`${rightArrows} Overall Grade: ${grade}% (${numberOfCorrectAnswers} of ${correctAnswers.length} responses correct) ${leftArrows}\n${rightArrows} Status: ${passFailStatus} ${leftArrows}`);
+
 
   return grade;
 }
